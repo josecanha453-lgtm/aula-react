@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,TextInput,Image } from 'react-native';
+import { View, Text, StyleSheet,TextInput,Image, Touchable, TouchableOpacity } from 'react-native';
 
 class Aula05 extends Component {
   render() {
@@ -25,6 +25,14 @@ class Aula05 extends Component {
                         style={ styles.input }
                         placeholder='     Informe seu e-mail:'
                     />
+
+                    <TouchableOpacity style={style.botao}>
+                      <Text style={ styles.textoBotao}>Entrar</Text>
+                    </TouchableOpacity>
+
+                    <Text style={styles.texto1}>Não tem conta ...
+                      <Text style={styles.texto2}>Cadastre-se!</Text>
+                    </Text>
 
             </View>
       </View>
@@ -64,7 +72,28 @@ const styles = StyleSheet.create({
   logo:{
     width: 100,
     height: 100,
+    alignSelf: 'center',
+    marginBottom: 70,
+  },
 
+  botao: {
+    backgroundColor: 'green',
+    width: 250,
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 30,
+  },
 
+  textoBotao: {
+    color: 'white',
+    textAlign: 'center',
+  },
+
+  texto1: {
+    color: 'white,'
+  },
+
+  texto2: {
+    color: 'blue',
   },
 });
