@@ -10,6 +10,10 @@ class Aula04 extends Component {
             source={require('../assets/icon.png')}
             style={ styles.icon}
         />
+        <Image
+            source={{uri: 'https://wallpapercat.com/w/full/d/a/8/5815708-2160x3840-iphone-hd-4k-background-image.jpg'}}
+            style={ styles.icon}
+        />
 
       </View>
     );
@@ -24,4 +28,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  icon: {
+    width: 150,
+    height: 300,
+  }
 });
