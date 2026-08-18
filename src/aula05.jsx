@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,TextInput,Image, Touchable, TouchableOpacity } from 'react-native';
+import { 
+  View, 
+  Text, 
+  StyleSheet,
+  TextInput,
+  Image, 
+  TouchableOpacity,
+} from 'react-native';
 
 class Aula05 extends Component {
   render() {
@@ -9,24 +16,22 @@ class Aula05 extends Component {
             <View>
 
                 <Image
-                    source={require('../img/Logo_Barao.png')}
+                    source={require('../img/logo_barao.png')}
                     style={styles.logo}
                 />
         
                 <Text style={styles.label }>Nome:</Text>
-
                     <TextInput
                         style={ styles.input }
                         placeholder='     Informe seu nome:'
                     />
                 <Text style={styles.label }>Email:</Text>
-
                     <TextInput
                         style={ styles.input }
                         placeholder='     Informe seu e-mail:'
                     />
 
-                    <TouchableOpacity style={style.botao}>
+                    <TouchableOpacity style={styles.botao}>
                       <Text style={ styles.textoBotao}>Entrar</Text>
                     </TouchableOpacity>
 
@@ -40,38 +45,37 @@ class Aula05 extends Component {
   }
 }
 
-export default Aula05;
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'black',
   },
 
   input:{
-    width: 300,
+    width: 250,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
     padding: 10,
     marginBottom: 15,
     fontSize: 16,
+    backgroundColor: 'white',
   },
 
   label:{
     fontSize: 16,
     marginBottom: 5,
-  },
-
-  centra:{
-    width: 200,
-    height: 200,
+    color: 'white',
+    //widdth:200
   },
 
   logo:{
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
     alignSelf: 'center',
     marginBottom: 70,
   },
@@ -90,10 +94,12 @@ const styles = StyleSheet.create({
   },
 
   texto1: {
-    color: 'white,'
+    color: 'white',
   },
 
   texto2: {
     color: 'blue',
   },
 });
+
+export default Aula05;
