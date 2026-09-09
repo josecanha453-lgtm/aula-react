@@ -6,7 +6,9 @@
 //import Aula06 from "./src/aula06";
 //import Aula07 from "./src/aula07";
 //import Aula08 from "./src/aula08";
-import Aula09 from "./src/aula09";
+//import Aula09 from "./src/aula09";
+import Aula10 from "./src/aula10";
+
 
 
 export default function App() {
@@ -19,6 +21,7 @@ export default function App() {
     //<Aula06/>
     //<Aula07/>
     //<Aula08/>
-    <Aula09/>
+    //<Aula09/>
+    <Aula10/>
   );
 }
