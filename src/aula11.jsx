@@ -2,77 +2,82 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Alert, Button, TextInput } from 'react-native';
 
 class Aula11 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        campo1: '',
-        campo: '',
-        resultado: ''
-    };
-  }
 
-  render() {
-    return (
-        <View style={styles.container}>
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Primeiro texto..."
-                    onChangeText={(t) => this.setState({ campo1: t })}
-                />
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Segundo texto..."
-                    onChangeText={(t) => this.setState({ campo2: t })}
-                />
+    constructor(props) {
+        super(props);
+        this.state = {
+            campo1: '',
+            campo2: '',
+            resultado: ''
+        }
+        this.salvaNoBanco = this.salvaNoBanco.bind(this);
+    }
 
-                <Button 
-                    title="Salvar e Exibir" 
-                    onPress={this.salvarNoBanco} 
-                />
+    async salvaNoBanco() {
+        const { campo1, campo2 } = this.state;
 
-                <Text style={styles.textoResultado}>
-                    {this.state.resultado}
-                    </Text>
-            
-        </View>
-    );
-    this.salvaNoBanco   =   this.salvaNoBanco.bind(this);
-  }
-
-    async salvanoBanco() {
-        const { campo1, campo2 }  =  this.state;
-
-        if( !compo1 || !campo2 ) {
+        if (!campo1 || !campo2) {
             Alert.alert('Atenção', 'Preencha todos os campos!');
             return;
         }
 
-        const IP_DA_SUA_MAQUINA = 'https:// 192.168.0.228:3000';
+        // CORREÇÃO 1: Removido o espaço e alterado para http
+        const IP_DA_SUA_MAQUINA = 'http://192.168.0.227:3000';
 
         try {
-            const response  =   await fetch(`${IP_DA_SUA_MAQUINA}/salvar` ,{
+            const response = await fetch(`${IP_DA_SUA_MAQUINA}/salvar`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type' : 'aplication/json'
+                    // CORREÇÃO 2: Corrigido de 'aplication/json' para 'application/json'
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({campo1, campo2})
-            })
+                body: JSON.stringify({ campo1, campo2 })
+            });
 
-            if( response.ok ) {
+            if (response.ok) {
                 this.setState({
-                    resultado: '${campo1} ${campo2}'
+                    resultado: `${campo1} ${campo2}`,
+                    campo1: '', // Limpa o campo 1
+                    campo2: ''  // Limpa o campo 2
                 });
-                Alert.alert('Sucesso', 'Dados salvos no MYSQL!')
-            }else {
-                Alert.alert('Erro', 'Falha ao salvar os dados')
+                Alert.alert('Sucesso', 'Dados salvos no MySQL!');
+            } else {
+                Alert.alert('Erro', 'Falha ao salvar os dados');
             }
-        }catch(error){
-            Alert.alert('Erro', 'Não foi possível conectar ao servidor backend.')
+        } catch (error) {
+            Alert.alert('Erro', 'Não foi possível conectar ao servidor backend.');
         }
     }
+
+  render() {
+    return (
+      <View style={styles.container}>
+            <TextInput 
+                style={styles.input}
+                placeholder="Primeiro texto..."
+                onChangeText={(t) => this.setState({ campo1: t })}
+            />
+            <TextInput 
+                style={styles.input}
+                placeholder="Segundo texto..."
+                onChangeText={(t) => this.setState({ campo2: t })}
+            />
+
+            <Button 
+                title="Salvar e Exibir" 
+                onPress={this.salvaNoBanco} 
+            />
+
+            <Text style={styles.textoResultado}>
+                {this.state.resultado}
+            </Text>
+        </View>
+    );
+  }
 }
 
 export default Aula11;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -96,4 +101,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
-

@@ -22,7 +22,7 @@ db.connect( err  => {
 //ROTA PARA SALVAR OS DADOS DO APP
 app.post('/salvar', (req, res) => {
     const {campo1, campo2 } = req.body;
-    const query = 'INSERT INTO mensagem (campo1, campo2) VALUES (??)'
+    const query = 'INSERT INTO mensagens (campo1, campo2) VALUES (?,?)'
 
     db.query(query, [campo1, campo2], (err, result) =>{
         if(err){
@@ -33,3 +33,13 @@ app.post('/salvar', (req, res) => {
 })
 
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+
+//Instalar os seguintes comandos node para configuração e comunicação com o mysql:
+
+//npm install express
+
+//npm instal mysql2 
+
+//npm instal mysql2 cors
+
+//npm install cors
