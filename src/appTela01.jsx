@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 
 class Tela01 extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Tela01 extends Component {
             <View style={ styles.bloco2 }>
                 <Text style={styles.welcomeText}>Bem-vindo!</Text>
                 <Text style={styles.subText}>Acesse sua conta</Text>
-
+        
                 <TextInput
                     style={styles.input}
                     placeholder='E-mail'
@@ -46,11 +46,24 @@ class Tela01 extends Component {
                     style={styles.input}
                     placeholder='Senha'
                     placeholderTextColor="#4caf50"
-                    keyboardType='email-anddress'
+                    keyboardType='password'
                 />
+
+                <TouchableOpacity style={styles.forgotPassword}>
+                  <Text style={{color: '#000', textDecorationLine:'underline'}}>Esqueci minha senha</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button}>
+                  <Text style={styles.buttonText}>Entrar</Text>
+                </TouchableOpacity>
+
             </View>
 
             <View style={ styles.bloco3 }>
+              <Text style={styles.footerText}>Ainda não tem conta? </Text>
+              <TouchableOpacity>
+                  <Text style={styles.linkText}>Cadastre-se</Text>
+                </TouchableOpacity>
 
             </View>
       </View>
@@ -76,16 +89,19 @@ const styles = StyleSheet.create({
 
   bloco2: {
     flex: 1,
+    width: '90%'
 
   },
 
   bloco3: {
-    borderColor: 'black',
-    borderWidth: 2,
-    height: 50,
+    height: 80,
     width: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center'
 
   },
+  
 
   divisor: {
     height: 0,
@@ -102,6 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
 
   },
+
   welcomeText: {
     fontSize: 28,
     fontWeight: 'bold',
@@ -111,22 +128,61 @@ const styles = StyleSheet.create({
     textAlign: 'center',
 
   },
+
   subText: {
     fontSize: 28,
     color: '#555',
     marginBottom: 30,
     marginTop: 0,
-    textAlign: 'center',
-    
+    textAlign: 'center',  
+
   },
+
   input: {
     width: '100%',
     borderWidth: 1,
-    borderColor: '#4csf50',
+    borderColor: '#4caf50',
     borderRadius: 8,
     padding: 15,
     marginBottom: 15,
     color: 'black',
+
   },
+
+  forgotPassword: {
+    alignSelf: 'center',
+    marginBottom: 30,
+
+  },
+
+  button: {
+    width: '100%',
+    backgroundColor: '#4caf50',
+    padding: 15,
+    borderRadius: 8,
+    marginBottom: 15,
+    alignItems:'center',
+
+  },
+
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+
+  },
+
+  footerText: {
+    color:'#000',
+    
+  },
+
+  linkText: {
+    color: '#000',
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+
+  },
+
 });
 
